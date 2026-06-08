@@ -5,7 +5,7 @@ on:
     inputs:
       target_url:
         description: "URL cible"
-        default: "https://www.greatcom-dz.com"
+        default: "https://ton-site.com"
       users:
         description: "Nombre d'users par worker"
         default: "2000"
