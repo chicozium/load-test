@@ -5,16 +5,16 @@ on:
     inputs:
       users:
         description: "Nombre d'users par worker"
-        default: "500"
+        default: "1000"
       duration:
         description: "Durée du test"
-        default: "3m"
+        default: "5m"
 
 jobs:
   load-test:
     strategy:
       matrix:
-        region: [0, 1, 2, 3, 4]  # 5 workers en parallèle
+        region: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  # 10 workers en parallèle
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,5 +27,5 @@ jobs:
           python -m locust -f locustfile.py \
             --headless \
             --users ${{ github.event.inputs.users }} \
-            --spawn-rate 50 \
+            --spawn-rate 200 \
             --run-time ${{ github.event.inputs.duration }}
