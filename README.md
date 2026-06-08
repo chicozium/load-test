@@ -15,18 +15,15 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Dans `locustfile.py`, modifie la ligne :
-
-```python
-BASE_URL = "https://ton-site.com"
-```
+L'URL cible se configure via la variable d'environnement `TARGET_URL`.
+Par défaut : `https://www.greatcom-dz.com`
 
 ## Lancer en local
 
 ### Avec interface web
 
 ```bash
-/usr/local/opt/python@3.11/bin/python3.11 -m locust -f locustfile.py
+TARGET_URL=https://ton-site.com /usr/local/opt/python@3.11/bin/python3.11 -m locust -f locustfile.py
 ```
 
 Ouvre **http://localhost:8089** et configure :
@@ -37,7 +34,7 @@ Ouvre **http://localhost:8089** et configure :
 ### Sans interface (headless)
 
 ```bash
-/usr/local/opt/python@3.11/bin/python3.11 -m locust -f locustfile.py \
+TARGET_URL=https://ton-site.com /usr/local/opt/python@3.11/bin/python3.11 -m locust -f locustfile.py \
   --headless \
   --users 500 \
   --spawn-rate 50 \
@@ -48,6 +45,7 @@ Ouvre **http://localhost:8089** et configure :
 
 1. Va sur **Actions** → **Load Test** → **Run workflow**
 2. Configure les paramètres :
+   - `URL cible` — ex: `https://ton-site.com`
    - `Nombre d'users par worker` — défaut: `2000`
    - `Durée du test` — défaut: `10m`
 3. Clique **Run workflow**
