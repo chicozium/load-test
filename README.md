@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ## Configuration
 
 L'URL cible se configure via la variable d'environnement `TARGET_URL`.
-Par défaut : `https://www.greatcom-dz.com`
+Par défaut : `https://ton-site.com`
 
 ## Lancer en local
 

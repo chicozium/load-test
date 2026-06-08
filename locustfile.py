@@ -53,7 +53,7 @@ def crawl(base_url, max_pages=100):
     return list(visited)
 
 import os
-BASE_URL = os.getenv("TARGET_URL", "https://www.greatcom-dz.com")
+BASE_URL = os.getenv("TARGET_URL", "https://ton-site.com")
 
 def get_all_urls():
     urls = set()
