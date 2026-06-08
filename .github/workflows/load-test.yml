@@ -1,0 +1,31 @@
+name: Load Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      users:
+        description: "Nombre d'users par worker"
+        default: "500"
+      duration:
+        description: "Durée du test"
+        default: "3m"
+
+jobs:
+  load-test:
+    strategy:
+      matrix:
+        region: [0, 1, 2, 3, 4]  # 5 workers en parallèle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Locust
+        run: pip install locust
+
+      - name: Run Locust worker ${{ matrix.region }}
+        run: |
+          locust -f locustfile.py \
+            --headless \
+            --users ${{ github.event.inputs.users }} \
+            --spawn-rate 50 \
+            --run-time ${{ github.event.inputs.duration }}
