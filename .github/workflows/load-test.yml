@@ -20,11 +20,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Locust
-        run: pip install -r requirements.txt
+        run: pip install --upgrade pip && pip install zope.event zope.interface gevent locust
 
       - name: Run Locust worker ${{ matrix.region }}
         run: |
-          locust -f locustfile.py \
+          python -m locust -f locustfile.py \
             --headless \
             --users ${{ github.event.inputs.users }} \
             --spawn-rate 50 \
