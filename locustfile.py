@@ -52,7 +52,8 @@ def crawl(base_url, max_pages=100):
     print(f"[CRAWL] {len(visited)} pages trouvées")
     return list(visited)
 
-BASE_URL = "https://www.greatcom-dz.com"
+import os
+BASE_URL = os.getenv("TARGET_URL", "https://www.greatcom-dz.com")
 
 def get_all_urls():
     urls = set()

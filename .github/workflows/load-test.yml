@@ -3,6 +3,9 @@ name: Load Test
 on:
   workflow_dispatch:
     inputs:
+      target_url:
+        description: "URL cible"
+        default: "https://www.greatcom-dz.com"
       users:
         description: "Nombre d'users par worker"
         default: "2000"
@@ -23,6 +26,8 @@ jobs:
         run: pip install --upgrade pip && pip install -r requirements.txt
 
       - name: Run Locust worker ${{ matrix.region }}
+        env:
+          TARGET_URL: ${{ github.event.inputs.target_url }}
         run: |
           python -m locust -f locustfile.py \
             --headless \
