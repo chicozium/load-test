@@ -80,4 +80,5 @@ class MonSite(HttpUser):
     def parcourir(self):
         url = URLS[MonSite._index % len(URLS)]
         MonSite._index += 1
-        self.client.get(url, timeout=1)
+        with self.client.get(url, timeout=1, catch_response=True) as r:
+            r.success()

@@ -5,10 +5,10 @@ on:
     inputs:
       users:
         description: "Nombre d'users par worker"
-        default: "1000"
+        default: "2000"
       duration:
         description: "Durée du test"
-        default: "5m"
+        default: "10m"
 
 jobs:
   load-test:
