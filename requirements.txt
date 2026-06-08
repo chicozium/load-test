@@ -1,4 +1,4 @@
-zope.event
-zope.interface
-gevent
-locust
+zope.event==5.0
+zope.interface==6.4.post2
+gevent==23.9.1
+locust==2.20.1
